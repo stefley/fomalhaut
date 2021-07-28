@@ -1,23 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Button, {ButtonType,ButtonSize} from './components/Button/button'
+import Menu from './components/Menu/menu'
+import MenuItem from './components/Menu/menuItem';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <Button disabled>Hello</Button>
+        <Button disabled>default</Button>
+        <Button onClick={() => alert(111)}>default</Button>
+        <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>primary</Button>
+        <Button btnType={ButtonType.Link} href="www.baidu.com">Baidu Link</Button>
+        <Button btnType={ButtonType.Danger} size={ButtonSize.Small}>Small Button</Button>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Menu>
+          <MenuItem>menu0</MenuItem>
+          <MenuItem>menu1</MenuItem>
+        </Menu>
       </header>
     </div>
   );
