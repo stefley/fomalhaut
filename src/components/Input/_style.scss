@@ -1,0 +1,105 @@
+.fomalhaut-input-wrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+    
+    .icon-wrapper {
+        position: absolute;
+        height: 100%;
+        width: 35px;
+        justify-content: center;
+        color: $input-color;
+        right: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        svg {
+            color: $input-placeholder-color;
+        }
+    }
+}
+.icon-wrapper+.fomalhaut-input {
+    padding-right: 35px;
+}
+
+.fomalhaut-input {
+    width: 100%;
+    font-size: $input-font-size;
+    font-family: $input-font-family;
+    font-weight: $input-font-weight;
+    color: $input-color;
+    background: $input-bg;
+    padding: $input-padding-y $input-padding-x;
+    line-height: $input-line-height;
+    border:$input-border-width solid $input-border-color;
+    border-radius: $input-border-radius;
+    background-clip: padding-box;
+    box-shadow: $input-box-shadow;
+    transition: $input-transition;
+    &:focus {
+        color: $input-focus-color;
+        border-color: $input-focus-border-color;
+        background-color: $input-focus-bg;
+        box-shadow: $input-focus-box-shadow;
+        outline: 0;
+    }
+    &::placeholder {
+        color: $input-placeholder-color;
+        // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+        opacity: 1;
+    }
+    &:disabled,
+    &[readonly] {
+        background-color: $input-disabled-bg;
+        border-color: $input-disabled-border-color;
+        // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+        opacity: 1;
+    }
+}
+
+.input-lg {
+    .fomalhaut-input {
+        font-size: $input-font-size-lg;
+        padding: $input-padding-y-lg $input-padding-x-lg;
+        border-radius: $input-border-radius-lg;
+    }
+}
+.input-sm {
+    .fomalhaut-input {
+        font-size: $input-font-size-sm;
+        padding: $input-padding-y-sm $input-padding-x-sm;
+        border-radius: $input-border-radius-sm;
+    }
+}
+
+.fomalhaut-input-prepand,
+.fomalhaut-input-append {
+    display: flex;
+    align-items: center;
+    padding: $input-padding-y $input-padding-x;
+    margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
+    font-size: $input-font-size; // Match inputs
+    font-weight: $font-weight-normal;
+    line-height: $input-line-height;
+    color: $input-group-addon-color;
+    text-align: center;
+    white-space: nowrap;
+    background-color: $input-group-addon-bg;
+    border: $input-border-width solid $input-group-addon-border-color;
+    border-radius: $input-border-radius;
+}
+
+.fomalhaut-input-append + .btn {
+    padding: 0;
+    border: 0;
+}
+
+.input-group > .fomalhaut-input-prepand,
+.input-group.input-group-append > .fomalhaut-input {
+  @include border-right-radius(0);
+}
+
+.input-group > .fomalhaut-input-append,
+.input-group.input-group-prepand > .fomalhaut-input {
+  @include border-left-radius(0);
+}
