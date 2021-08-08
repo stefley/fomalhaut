@@ -12,7 +12,7 @@ function App() {
   
 const data = ["apple", "banale", "pear", "coat", "shirt", "paint"]
 const handleFetch = (str: string) => {
-    return data.filter(name => name.includes(str))
+    return data.filter(name => name.includes(str)).map(name => ({value: name}))
 }
   const [show, setShow] = useState(false)
   return (
