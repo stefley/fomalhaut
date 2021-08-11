@@ -1,7 +1,7 @@
 import React, { FC, useRef, useState } from "react";
 import classNames from "classnames";
 import axios from "axios";
-
+import UploadList from "./uploadList";
 import Button from "../Button/button";
 
 export type UploadFileStatus = 'ready' | 'success' | 'uploading' | 'error'
@@ -28,7 +28,7 @@ export interface UploadProps {
 export const Upload: FC<UploadProps> = (props) => {
   const { action, defaultList, beforeUpload, onProgress, onSuccess, onError, onChange, onRemove } = props;
   const fileInput = useRef<HTMLInputElement>(null);
-  const [ fileList, setFileList ] = useState<UploadFile[]>([])
+  const [ fileList, setFileList ] = useState<UploadFile[]>(defaultList || [])
   const updateFileList = (updateFile: UploadFile, updateObj: Partial<UploadFile>) => {
      setFileList((preList) => {
        return preList.map(file => {
@@ -70,6 +70,12 @@ export const Upload: FC<UploadProps> = (props) => {
       }
     });
   };
+  const handleRemove = (file: UploadFile) => {
+    setFileList((prevList) => {
+      return prevList.filter(item => item.uid !== file.uid)
+    })
+    props.onRemove?.(file)
+  }
   const post = (file: File) => {
     let _file: UploadFile = {
       uid: Date.now() + 'upload-file',
@@ -123,6 +129,10 @@ export const Upload: FC<UploadProps> = (props) => {
         className="fomalhaut-file-input"
         ref={fileInput}
         onChange={handleChange}
+      />
+      <UploadList 
+        fileList={fileList}
+        onRemove={handleRemove}
       />
     </div>
   );

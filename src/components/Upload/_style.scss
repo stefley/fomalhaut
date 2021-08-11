@@ -1,0 +1,65 @@
+.fomalhaut-upload-wrapper {
+  .fomalhaut-upload-list {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    .fomalhaut-upload-list-item {
+      transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border-radius: 4px;
+      min-width: 200px;
+      position: relative;
+      &:first-child {
+        margin-top: 10px;
+      }
+      .file-name {
+        margin-left: 5px;
+        margin-right: 40px;
+        color: $gray-500;
+        svg {
+          margin-right: 5px;
+          color: $gray-500;
+        }
+        &.file-name-success {
+          color: $success;
+          svg {
+            color: $success;
+          }
+        }
+        &.file-name-error {
+          color: $danger;
+          svg {
+            color: $danger;
+          }
+        }
+      }
+      .file-status {
+        display: block;
+        position: absolute;
+        right: 5px;
+        top: 0px;
+        line-height: inherit;
+      }
+      .file-actoins {
+        display: none;
+        position: absolute;
+        right: 7px;
+        top: 0px;
+        line-height: inherit;
+        cursor: pointer;
+      }
+      &:hover {
+        background: $gray-200;
+        .file-status {
+          display: none;
+        }
+        .file-actoins {
+          display: block;
+        }
+      }
+    }
+  }
+}
