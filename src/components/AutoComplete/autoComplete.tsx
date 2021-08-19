@@ -153,3 +153,5 @@ export const AutoComplate: FC<AutoCompleteProps> = (props) => {
     </div>
   );
 };
+
+export default AutoComplate
